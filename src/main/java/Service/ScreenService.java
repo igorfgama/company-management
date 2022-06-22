@@ -1,5 +1,6 @@
 package Service;
 
+import Model.Developer;
 import Model.Employee;
 
 import java.util.InputMismatchException;
@@ -9,8 +10,6 @@ import static Service.RecordService.employeesRegister;
 
 public class ScreenService {
     public static void showAllEmployees(){
-        employeesRegister.stream().forEach(Employee::getName);
-        System.out.println("--------");
         for(Employee employee : employeesRegister)
             System.out.println("[" + employee.getName() + ", "
                                    + employee.getId() + ", "
@@ -25,20 +24,21 @@ public class ScreenService {
             System.out.println("CPF: ");
             String id = scanner.next();
 
-//            if(employeesRegister.stream().findAny().get().getId().equals(id)){
-                for(Employee employee : employeesRegister){
-                    if(employee.getId().equals(id)){
-                        System.out.println("O salário do "
-                                + employee.selectPost(employee.getPost())
-                                + " "
-                                + employee.getName() + " é de R$ "
-                                + employee.getIncome());
-                        return;
+            for(Employee employee : employeesRegister){
+                if(employee.getId().equals(id)){
+                    System.out.println("O salário do "
+                            + employee.selectPost(employee.getPost())
+                            + " "
+                            + employee.getName() + " é de R$ "
+                            + employee.getIncome());
+                    if(employee.getPost()==3){
+                        Developer devAux = (Developer) employee;
+                        System.out.println("Último bônus: " + devAux.getLastBonusIncrease());
                     }
+                    return;
                 }
+            }
             System.out.println("CPF não cadastrado.");
-//            } else
-//                System.out.println("CPF não cadastrado.");
         } catch (InputMismatchException input){
             throw new InputMismatchException("Entrada inválida.");
         }

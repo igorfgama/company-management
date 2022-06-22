@@ -13,7 +13,7 @@ public class Developer extends Employee {
 
     public Developer(String name, String id, int choice, BigDecimal income) {
         super(name, id, choice, income);
-        lastBonusIncrease = LocalDate;
+        lastBonusIncrease = LocalDate.now();
     }
 
     @Override

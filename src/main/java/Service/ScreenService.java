@@ -3,6 +3,7 @@ package Service;
 import Model.Developer;
 import Model.Employee;
 
+import java.math.BigDecimal;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,12 +18,6 @@ public class ScreenService {
         System.out.print(employeesRegister.stream()
                 .mapToDouble(e -> Double.valueOf(String.valueOf(e.getIncome())))
                 .sum());
-        
-//        for(Employee employee : employeesRegister)
-//            System.out.println("[" + employee.getName() + ", "
-//                                   + employee.getId() + ", "
-//                                   + employee.selectPost(employee.getPost()) + ", R$ "
-//                                   + employee.getIncome() + "]");
     }
 
     public static void findEmployeeeById() {

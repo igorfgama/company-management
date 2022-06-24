@@ -10,11 +10,19 @@ import static Service.RecordService.employeesRegister;
 
 public class ScreenService {
     public static void showAllEmployees(){
-        for(Employee employee : employeesRegister)
-            System.out.println("[" + employee.getName() + ", "
-                                   + employee.getId() + ", "
-                                   + employee.selectPost(employee.getPost()) + ", R$ "
-                                   + employee.getIncome() + "]");
+        employeesRegister.stream()
+                .map(Employee::getIncome)
+                .forEach(System.out::println);
+
+        System.out.print(employeesRegister.stream()
+                .mapToDouble(e -> Double.valueOf(String.valueOf(e.getIncome())))
+                .sum());
+        
+//        for(Employee employee : employeesRegister)
+//            System.out.println("[" + employee.getName() + ", "
+//                                   + employee.getId() + ", "
+//                                   + employee.selectPost(employee.getPost()) + ", R$ "
+//                                   + employee.getIncome() + "]");
     }
 
     public static void findEmployeeeById() {

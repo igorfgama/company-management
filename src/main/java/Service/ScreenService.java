@@ -3,6 +3,7 @@ package Service;
 import Model.Developer;
 import Model.Employee;
 
+import java.math.BigDecimal;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -10,11 +11,21 @@ import static Service.RecordService.employeesRegister;
 
 public class ScreenService {
     public static void showAllEmployees(){
-        for(Employee employee : employeesRegister)
-            System.out.println("[" + employee.getName() + ", "
-                                   + employee.getId() + ", "
-                                   + employee.selectPost(employee.getPost()) + ", R$ "
-                                   + employee.getIncome() + "]");
+
+//        for(Employee employee : employeesRegister)
+//            System.out.println("[" + employee.getName() + ", "
+//                                   + employee.getId() + ", "
+//                                   + employee.selectPost(employee.getPost()) + ", R$ "
+//                                   + employee.getIncome() + "]");
+
+        employeesRegister.stream()
+                .map(Employee::getIncome)
+                .forEach(System.out::println);
+
+        Double sum = employeesRegister.stream()
+                .mapToDouble(e -> Double.parseDouble(String.valueOf(e.getIncome())))
+                .sum();
+        System.out.println("Total: R$ " + sum);
     }
 
     public static void findEmployeeeById() {

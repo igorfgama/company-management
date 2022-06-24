@@ -30,7 +30,8 @@ public class MenuService {
 
         while (true){
             try {
-                System.out.print("CADASTRAR:\n    1. GERENTE\n    2. COORDENADOR\n    3. PROGRAMADOR\n4. LISTAR FUNCIONÁRIOS\n5. BUSCAR POR FUNCIONÁRIO\n6. SAIR\n -> ");
+                System.out.print("CADASTRAR:\n    1. GERENTE\n    2. COORDENADOR\n    3. PROGRAMADOR\n" +
+                        "4. LISTAR FUNCIONÁRIOS\n5. BUSCAR POR FUNCIONÁRIO\n6. SAIR\n -> ");
                 int choice = scanner.nextInt();
 
                 switch (choice){
